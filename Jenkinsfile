@@ -54,12 +54,12 @@ pipeline {
                 echo 'Deploy start'
                 script{
                     if (BUILD_NUMBER == "1") {
-                        sh 'docker run --name $CONTAINER_NAME -d -p 80:80 $REPO_TAG'
+                        sh 'docker run --name $CONTAINER_NAME -d -p 20020:20020 $REPO_TAG'
                     }
                     else {
                         //sh 'docker stop $CONTAINER_NAME'
                         //sh 'docker rm $CONTAINER_NAME'
-                        sh 'docker run --name $CONTAINER_NAME -d -p 80:80 $REPO_TAG'
+                        sh 'docker run --name $CONTAINER_NAME -d -p 20020:20020 $REPO_TAG'
                     }
                 }
                 echo 'Deploy end'
