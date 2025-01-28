@@ -9,6 +9,11 @@ pipeline {
         GITHUB_BRANCH = 'master'
         REPO_TAG = 'console-project'
         CONTAINER_NAME = 'console-project'
+        DB_USER = credentials('console-db-user')
+        DB_PASSWORD = credentials('console-db-password')
+        DB_SCHEME = credentials('console-db-scheme')
+        DB_PORT = credentials('console-db-port')
+        DB_HOST = credentials('console-db-host')
     }
     stages {
     	// 깃허브 소스코드를 가져오는 부분
@@ -53,14 +58,14 @@ pipeline {
             steps {
                 echo 'Deploy start'
                 script{
-                    if (BUILD_NUMBER == "1") {
-                        sh 'docker run --name $CONTAINER_NAME -d -p 20020:20020 $REPO_TAG'
+                    try{
+                        sh 'docker stop $CONTAINER_NAME'
+                        sh 'docker rm $CONTAINER_NAME'
+                    } catch (Exception e) {
+                        echo 'No container name: $CONTAINER_NAME'
                     }
-                    else {
-                        //sh 'docker stop $CONTAINER_NAME'
-                        //sh 'docker rm $CONTAINER_NAME'
-                        sh 'docker run --name $CONTAINER_NAME -d -p 20020:20020 $REPO_TAG'
-                    }
+
+                    sh 'docker run --name $CONTAINER_NAME -d --network host -e DB_USE=$DB_USER -e DB_PASSWORD=$DB_PASSWORD -e DB_HOST=$DB_HOST -e DB_PORT=$DB_PORT -e DB_SCHEME=$DB_USER -p 20020:20020 $REPO_TAG'
                 }
                 echo 'Deploy end'
             }
