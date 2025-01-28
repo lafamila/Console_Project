@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/css/common.css" rel="stylesheet"/>
+</head>
+<body>
+  <canvas id="canvas">
+
+  </canvas>
+  <button>click</button>
+  <script src="/static/js/life.js"></script>
+    <script>
+        $.ajax({
+            url : '/api/get_value',
+            method : 'post',
+            data : {"key1" : 10},
+            success : function(){
+
+            }
+        });
+
+        $(document).ready(function(){
+
+
+
+
+        });
+    </script>
+</body>
+</html>
