@@ -7,8 +7,8 @@ pipeline {
         GITHUB_URL = 'https://github.com/lafamila/Console_Project.git'
         GITHUB_CRED_ID = 'github-token'
         GITHUB_BRANCH = 'master'
-        REPO_TAG = 'ConsoleProject'
-        CONTAINER_NAME = 'Console_Project'
+        REPO_TAG = 'console-project'
+        CONTAINER_NAME = 'console-project'
     }
     stages {
     	// 깃허브 소스코드를 가져오는 부분
