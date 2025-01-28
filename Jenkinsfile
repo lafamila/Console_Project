@@ -57,8 +57,8 @@ pipeline {
                         sh 'docker run --name $CONTAINER_NAME -d -p 80:80 $REPO_TAG'
                     }
                     else {
-                        sh 'docker stop $CONTAINER_NAME'
-                        sh 'docker rm $CONTAINER_NAME'
+                        //sh 'docker stop $CONTAINER_NAME'
+                        //sh 'docker rm $CONTAINER_NAME'
                         sh 'docker run --name $CONTAINER_NAME -d -p 80:80 $REPO_TAG'
                     }
                 }
