@@ -3,6 +3,7 @@ from .connectors.db_connector import DB
 bp = Blueprint("api", __name__, url_prefix="/api")
 
 
+
 @bp.route('/load_files', methods=['POST'])
 def load_files():
     db = DB()
